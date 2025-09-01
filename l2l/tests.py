@@ -47,3 +47,6 @@ class L2LDateTimeFilterTests(TestCase):
         result_dt = l2l_dt(self.test_datetime)
         result_str = l2l_dt(self.test_iso_string)
         self.assertEqual(result_dt, result_str)
+
+    # Additional (possibly overkill) test cases to consider:
+    # Handling different timezones, various ISO formats, unexpected types
