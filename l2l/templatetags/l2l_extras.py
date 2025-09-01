@@ -24,7 +24,12 @@ def l2l_dt(value):
             dt = datetime.fromisoformat(value)
             return dt.strftime("%Y-%m-%d %H:%M:%S")
     
+    except (ValueError, TypeError, AttributeError):
+        # We expect these when parsing bad date strings
+        # log.warning(f"l2l_dt filter couldn't parse value: {value}")
+        return value
+    
     except Exception as e:
         # consider logging error with logger library. ie:
         # log.error(f"Error in l2l_dt filter: {e}")
-        return value
+        raise
