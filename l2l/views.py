@@ -9,6 +9,7 @@ def index(request):
     template = loader.get_template('l2l/index.html')
     context = {
         'iso': now.strftime("%Y-%m-%dT%H:%M:%S"),
-        'now': now
+        'now': now,
+        'invalid_now': 'September 32nd, 2025'
     }
     return HttpResponse(template.render(context, request))
