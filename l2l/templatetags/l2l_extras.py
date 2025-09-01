@@ -23,10 +23,11 @@ def l2l_dt(value):
         elif isinstance(value, str):
             dt = datetime.fromisoformat(value)
             return dt.strftime("%Y-%m-%d %H:%M:%S")
-    
-    except (ValueError, TypeError, AttributeError):
+
+    except (ValueError, TypeError, AttributeError) as e:
         # We expect these when parsing bad date strings
-        # log.warning(f"l2l_dt filter couldn't parse value: {value}")
+        # consider logging with logger library. ie:
+        # log.warning(f"l2l_dt filter couldn't parse value: {value}, exception: {e}")
         return value
     
     except Exception as e:
